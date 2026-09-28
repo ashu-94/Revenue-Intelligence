@@ -1,0 +1,12 @@
+{
+  "train_rows": 11971,
+  "test_rows": 3459,
+  "split_month": "2026-03-01",
+  "decision_threshold": 0.72,
+  "accuracy": 0.9442,
+  "precision": 0.0845,
+  "recall": 0.16,
+  "f1": 0.1106,
+  "roc_auc": 0.681,
+  "test_churn_rate": 0.0217
+}

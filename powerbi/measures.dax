@@ -1,0 +1,37 @@
+-- Table name expected: powerbi_customer_month
+
+Total MRR = SUM(powerbi_customer_month[mrr])
+
+Active Customers = DISTINCTCOUNT(powerbi_customer_month[customer_id])
+
+Churned Customers =
+CALCULATE(
+    DISTINCTCOUNT(powerbi_customer_month[customer_id]),
+    powerbi_customer_month[churn_flag] = 1
+)
+
+Customer Churn Rate = DIVIDE([Churned Customers], [Active Customers])
+
+Expansion MRR = SUM(powerbi_customer_month[expansion_mrr])
+
+Contraction MRR = SUM(powerbi_customer_month[contraction_mrr])
+
+Prior Month MRR = CALCULATE([Total MRR], DATEADD('Calendar'[Date], -1, MONTH))
+
+MRR Growth Rate = DIVIDE([Total MRR] - [Prior Month MRR], [Prior Month MRR])
+
+Net Revenue Retention =
+DIVIDE([Prior Month MRR] + [Expansion MRR] - [Contraction MRR], [Prior Month MRR])
+
+Average NPS = AVERAGE(powerbi_customer_month[nps])
+
+Feature Adoption = AVERAGE(powerbi_customer_month[feature_adoption_rate])
+
+Average Resolution Hours = AVERAGE(powerbi_customer_month[avg_resolution_hours])
+
+Revenue at Risk =
+SUMX(
+    FILTER(customer_risk_scores, customer_risk_scores[risk_band] = "High"),
+    customer_risk_scores[mrr]
+)
+

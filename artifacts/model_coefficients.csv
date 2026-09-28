@@ -1,0 +1,11 @@
+feature,standardized_coefficient
+intercept,-0.37863
+tenure_months,0.03286
+active_seats,-0.09568
+monthly_logins,-0.09797
+feature_adoption_rate,-0.27188
+support_tickets,0.239
+avg_resolution_hours,0.26918
+nps,-0.45646
+discount_rate,-0.01241
+contraction_mrr,-0.03668
